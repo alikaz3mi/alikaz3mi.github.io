@@ -8,6 +8,30 @@ permalink: /projects/
 
 Here is a collection of some of the key projects I have worked on, showcasing my skills in AI, NLP, product management, and scalable system design.
 
+### [Mind2Text](https://github.com/alikaz3mi/mind2text)
+
+**Objective**: A comprehensive framework for EEG signal classification using Large Language Models (LLMs) with symbolic tokenization and efficient fine-tuning.
+**Technologies**: Python, PyTorch, Transformers (Hugging Face), LoRA, Pydantic, FastAPI, Docker
+**Outcome**: Achieved 78.2% accuracy with LLM (LoRA), outperforming CNN and SVM baselines. Demonstrated the superiority of transformer models for cognitive state classification.
+
+---
+
+### [ParsChat](https://chat.parstechai.com)
+
+**Objective**: Architect a Retrieval-Augmented Generation (RAG) system serving 200+ active enterprise users. Designed the vector retrieval pipeline to handle custom, domain-specific client requirements with high availability.
+**Technologies**: Python, RAG, LLM, Vector Search, Microservices, CI/CD, Hybrid Search
+**Outcome**: Reduced chatbot delivery time from 1 week to 5 min and setup costs from $2.50 to $0.10. Increased information retrieval accuracy by 30% using hybrid search and re-ranking.
+
+---
+
+### DastYar
+
+**Objective**: Develop a versatile video analytics product capable of deployment on both GPU and CPU-based servers. Integrated AI pipelines for face recognition, people counting, and license plate recognition.
+**Technologies**: Python, Gstreamer, PostgreSQL, Django, Vue.js, TensorRT, YOLO, Docker
+**Outcome**: Optimized video analytics (GPU latency 200 → 40 ms, throughput ≈ 1,000 fps). Fine-tuned a large-scale face recognition model on 49M+ images, reaching 99.97% accuracy.
+
+---
+
 ### [Family Accounting](https://github.com/alikaz3mi/family-accounting)
 
 **Objective**: Build a family-oriented accounting system with support for group financial management, loan tracking, and member categorization. The system is accessible via Telegram and Streamlit, with built-in SMS authentication for security.  

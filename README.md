@@ -1,8 +1,8 @@
 
-# Ali Kazemi - Product Manager & CTO Portfolio
+# Ali Kazemi - Product Manager & Product Tech Lead Portfolio
 
-**Chief Technology Officer at SensoMatt AI**  
-[LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi) | [Email](mailto:alikazemi@ieee.org)
+**Product Tech Lead at ParsTech AI**  
+[LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi) | [Email](mailto:alikazemi@ieee.org) | [Resume](/resume/)
 
 ---
 
@@ -54,7 +54,7 @@ I am an experienced AI professional with a product management mindset, specializ
 
 ## Major Accomplishments
 
-### SensoMatt AI - **Chief Technology Officer (July 2021 – Present)**
+### ParsTech AI - **Product Tech Lead (July 2021 – Present)**
 
 - **Product Development**: Spearheaded the development of a **license plate recognition system**, reducing latency by 75% and improving FPS performance, making it deployable on low-power edge devices.
 - **Leadership**: Managed a cross-functional team (AI engineers, backend developers, UI/UX designers) to develop and launch **Vanguard**, a comprehensive AI-based surveillance product, reducing production costs by 20% while delivering 15% under budget.
