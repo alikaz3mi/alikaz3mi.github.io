@@ -1,8 +1,4 @@
 
----
-layout: default
----
-
 # Ali Kazemi - Product Manager & Product Tech Lead Portfolio
 
 **Product Tech Lead at ParsTech AI**  
