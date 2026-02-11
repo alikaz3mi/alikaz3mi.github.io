@@ -6,7 +6,7 @@ permalink: /projects/
 
 ## Featured Projects
 
-Here is a collection of some of the key projects I have worked on, showcasing my skills in AI, NLP, product management, and scalable system design.
+Here is a collection of some of the key projects I have worked on, showcasing my skills in AI, NLP, technical leadership, and scalable system design.
 
 ### [Mind2Text](https://github.com/alikaz3mi/mind2text)
 
@@ -29,14 +29,6 @@ Here is a collection of some of the key projects I have worked on, showcasing my
 **Objective**: Develop a versatile video analytics product capable of deployment on both GPU and CPU-based servers. Integrated AI pipelines for face recognition, people counting, and license plate recognition.
 **Technologies**: Python, Gstreamer, PostgreSQL, Django, Vue.js, TensorRT, YOLO, Docker
 **Outcome**: Optimized video analytics (GPU latency 200 → 40 ms, throughput ≈ 1,000 fps). Fine-tuned a large-scale face recognition model on 49M+ images, reaching 99.97% accuracy.
-
----
-
-### [Family Accounting](https://github.com/alikaz3mi/family-accounting)
-
-**Objective**: Build a family-oriented accounting system with support for group financial management, loan tracking, and member categorization. The system is accessible via Telegram and Streamlit, with built-in SMS authentication for security.  
-**Technologies**: Python, FastAPI, PostgreSQL, Redis, Streamlit, Langchain (OpenAI Integration)  
-**Outcome**: Delivered a secure, user-friendly system with clean architecture, capable of managing family accounts in real-time.
 
 ---
 

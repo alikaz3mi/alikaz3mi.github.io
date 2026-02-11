@@ -5,7 +5,7 @@ permalink: /resume/
 ---
 
 # Ali Kazemi
-**Product Tech Lead at ParsTech AI**  
+**Product Lead at ParsTech AI**  
 📍 Mashhad, Iran | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307  
 🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi)
 
@@ -110,8 +110,7 @@ Feb 2014 - Feb 2018
 
 ## Language
 - **Persian**: Native
-- **German**: Beginner
-- **TOEFL iBT**: 94 / 120 (Reading: 23, Listening: 28, Speaking: 21, Writing: 22)
+- **TOEFL iBT**: 105 / 120 (Reading: 28, Listening: 29, Speaking: 23, Writing: 25)
 
 ## References
 - **Prof. Hamid Abrishami Moghaddam**, moghaddam@kntu.ac.ir — Thesis Supervisor, KNTU
