@@ -1,9 +1,11 @@
 
 # Ali Kazemi — Expert Machine Learning Engineer
 
-**Expert Machine Learning Engineer | AI Agent & LLM Systems | MLOps**  
-📍 Mashhad, Iran | Ready to Relocate | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307  
-🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi) | [Resume](/resume/)
+**Expert Machine Learning Engineer · AI Agent & LLM Systems · MLOps**
+
+📍 Mashhad, Iran · Ready to Relocate · 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) · 📱 (+98) 915-239-0307
+
+🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) · [GitHub](https://github.com/alikaz3mi) · [Resume](/resume/)
 
 ---
 
