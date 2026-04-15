@@ -18,9 +18,9 @@ Here is a collection of some of the key projects I have worked on, showcasing my
 
 ### [ParsChat](https://chat.parstechai.com)
 
-**Objective**: Architect a Retrieval-Augmented Generation (RAG) system serving 200+ active enterprise users. Designed the vector retrieval pipeline to handle custom, domain-specific client requirements with high availability.
-**Technologies**: Python, RAG, LLM, Vector Search, Microservices, CI/CD, Hybrid Search
-**Outcome**: Reduced chatbot delivery time from 1 week to 5 min and setup costs from $2.50 to $0.10. Increased information retrieval accuracy by 30% using hybrid search and re-ranking.
+**Objective**: Owned the full lifecycle of a Python-based AI agent platform handling 20,000+ daily messages across diverse enterprise clients, integrating agents with existing CRM and e-commerce backend systems.
+**Technologies**: Python, LangGraph, QWEN/vLLM (RTX 5090), RAG, LlamaIndex, ChromaDB, Milvus, Elasticsearch, FastAPI, Docker
+**Outcome**: Reduced agent delivery time from 1 week to 5 minutes and cut per-user setup costs by 96% ($2.50 → $0.10). Achieved 60 messages/min throughput via graph-based LangGraph orchestration with intent-based routing, enabling zero-hallucination processing of knowledge bases up to 10 million characters.
 
 ---
 
@@ -31,7 +31,23 @@ Here is a collection of some of the key projects I have worked on, showcasing my
 **Outcome**: Optimized video analytics (GPU latency 200 → 40 ms, throughput ≈ 1,000 fps). Fine-tuned a large-scale face recognition model on 49M+ images, reaching 99.97% accuracy.
 
 ---
+### DIPAL — Drone Pipeline Backend
 
+**Role**: Backend Engineer (Sensifai BV — SPADE Open Call #2, Sep 2025 – Mar 2026)
+**Objective**: Engineer scalable AWS backend services automating structure-from-motion (SfM) and multi-view-stereo (MVS) pipelines for an open-source photogrammetry toolkit.
+**Technologies**: Python, AWS (EC2, SQS, IAM), REST API, GIS, SfM/MVS
+**Outcome**: Automated aerial drone capture processing into accurate 3D reconstructions and geospatial outputs with REST API integration for downstream GIS workflows.
+
+---
+
+### SensiGesture — Automotive In-Cabin AI
+
+**Role**: ML/MLOps Engineer (Sensifai BV, Feb 2022 – Jul 2022)
+**Objective**: Build a real-time in-cabin driver monitoring system recognizing gestures and driver activity for automotive-grade edge hardware.
+**Technologies**: Python, MobileNetV3, PyTorch, TensorRT, Edge MLOps, Docker
+**Outcome**: Curated 350,000+ annotated RGB frames across day/night/glare/overcast conditions. Trained models achieving recognition of 22 gestures and 20 driver activity classes (drowsiness, phone use, seatbelt violations). Built end-to-end MLOps pipeline for data versioning, automated evaluation, and on-device deployment.
+
+---
 ### [Jira Telegram Bot](https://github.com/alikaz3mi/jira-telegram-bot)
 
 **Objective**: Develop a Telegram bot to automate interactions with Jira, allowing users to manage tasks directly from Telegram without the need for Jira’s interface.  

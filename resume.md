@@ -5,114 +5,100 @@ permalink: /resume/
 ---
 
 # Ali Kazemi
-**Product Lead at ParsTech AI**  
-📍 Mashhad, Iran | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307  
+**Expert Machine Learning Engineer**  
+📍 Mashhad, Iran | Ready to Relocate | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307  
 🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi)
 
-## Research Profile
-R&D Leader and AI Architect with a dual background in Biomedical Engineering (Neuroscience/MRI) and Large-Scale Software Architecture. Currently serving as product tech lead, bridging the gap between state-of-the-art Generative AI research and production-grade deployment. Proven expertise in building RAG systems, Knowledge Graphs, and Active Learning pipelines for healthcare and enterprise domains. Experienced in leading cross-functional teams (15+ researchers and developers), establishing CI/CD standards, and mentoring junior researchers. Seeking to leverage industrial architectural rigor within the VIOLET Project’s medical AI framework.
+---
 
-## Research Interest
-- **Generative AI & Speech Processing**: Modeling continuous signals, Large Language Models
-- **Scalable AI Systems**: Efficient inference for microservice-based AI pipelines
+## Professional Summary
 
-## Education
-**Khajeh Nasir University of Technology (KNTU)**  
-*M.Sc., Biomedical Engineering (Bioelectric) — Tehran, Iran*  
-Oct 2019 - Feb 2023  
-GPA: 18.04 / 20  
-**Thesis**: Modeling of Human Brain Perisylvian Pathways Development with Diffusion Tensor Imaging
-- Investigated microstructural changes in neonatal brains (37–44 weeks) using diffusion MRI.
-- Applied q-space diffeomorphic reconstruction to map language processing tracts (arcuate fasciculus), quantifying fractional anisotropy and mean diffusivity.
-- Demonstrated statistical expertise in handling sparse, noisy medical imaging data to identify leftward asymmetries in early language circuitry.
+- 5+ years of experience in ML & AI Engineering, including 2 years as Tech Lead managing cross-functional teams of up to 15.
+- **Architected production RAG & LLM pipelines** handling **2,000 requests/min**, achieving a **96% reduction in per-user setup costs** ($2.50 to $0.10).
+- **Deployed high-performance NLP & OCR pipelines** with **<50ms latency** on 2GHz CPUs, reducing Italian handwriting Word Error Rate (WER) from 20% to 3%.
+- **Engineered Large-Scale CV systems**, fine-tuning facial recognition models on **49M+ images** to achieve 99.97% accuracy.
+- **TOEFL iBT: 105/120**.
 
-**Ferdowsi University of Mashhad (FUM)**  
-*B.Sc., Electrical Engineering (Communications) — Mashhad, Iran*  
-Oct 2014 - Feb 2019  
-GPA: 15.8 / 20  
-**Thesis**: Smoke Detection using Compressive Sensing and SVM (10k-image dataset collection, ~70% accuracy)
+---
 
-## Publication
-**Kazemi, A.**, Abrishami Moghaddam, H., Namiranian, R.  
-*Microstructural Analysis of Language Pathways’ Development in Term Neonates.* (Manuscript in preparation)
+## Technical Skills
 
-## Academic Research Experience
-**KNTU — Master’s Thesis**  
-Oct 2019 - Feb 2023  
-- Modeled neonatal language tracts (AF, IFOF, EC, etc.) and built developmental benchmarks for language development studies.
+- **Python & Software Engineering:** Python 3.x (asyncio, type hints, context managers, OOP, design patterns), TDD, modular architecture, unit testing, code review practices.
+- **AI Agent Development:** Agent design and orchestration (LangGraph, LlamaIndex), LLMs (open-source & APIs), Advanced RAG, vector databases (ChromaDB, Milvus, Elasticsearch), Transformers, NER.
+- **3rd-Party Model Evaluation:** Production experience with OpenAI, QWEN, and OSS LLMs; hands-on trade-off analysis across latency, cost, accuracy, and context-window limits for production selection.
+- **CI/CD & MLOps:** Docker, Kubernetes, GitLab/GitHub Actions CI/CD, Infrastructure as Code (Ansible), Model Serving (FastAPI, gRPC, vLLM, TensorRT), GitOps.
+- **Observability & Cloud:** AWS (EC2, SQS, IAM, CloudWatch), Prometheus, Grafana, Graylog, SQL (PostgreSQL), NoSQL (MongoDB), scalable data pipelines, PyTorch, TensorFlow.
 
-**Selected Graduate Projects**  
-- Alzheimer classification from DTI (ensemble learning, 82% Accuracy)
-- MBTI prediction from video + audio (78% Accuracy)
-
-## Teaching Experience
-**KNTU — Teaching Assistant**  
-Mar 2021- Jul 2022  
-- Digital Image Processing: Filtering, feature extraction, and classification labs
-- Vital Statistics Analysis: Probability models, regression, and biostatistics labs
+---
 
 ## Professional Experience
 
-**ParsTech AI — Product Tech Lead**  
-*Mashhad, Iran*  
-Jul 2020 - Present
+### ParsTech AI — Product Tech Lead
+*Mashhad, Iran | Jul 2020 – Present*
 
-**AI Tech Lead**
-- **R&D Leadership & Mentoring**: Lead a cross-functional research and engineering team of 15 members (AI, Backend, Frontend, DevOps). Established Clean Architecture and Domain-Driven Design (DDD) principles, mirroring the "Quality Assurance" requirements of large-scale research frameworks.
-- **Strategic Innovation**: Spearheaded the transition from monolithic architectures to microservices, enabling horizontal scalability and 99.9% uptime.
-- **DevOps & Governance**: Enforced rigorous CI/CD pipelines, TDD (Test-Driven Development), and containerization (Docker/Kubernetes), reducing deployment cycles from days to hours.
+**Tech Lead**
+- **MLOps & Infrastructure Automation:** Architected **Infrastructure as Code (IaC)** workflows using **GitLab CI/CD** and **Ansible** to automate the provisioning of high-performance GPU clusters, reducing environment setup time from days to hours.
+- **Scalable Model Serving & Observability:** Migrated monolith to containerized **AWS EC2** microservices with **SQS** task queuing, ensuring 99.9% uptime; established **Prometheus/Grafana/CloudWatch** monitoring for model drift and latency tracking.
+- **Autonomous AI Agent:** Designed and deployed a production Python agent that processes multimodal inputs (voice, text, image) to autonomously route and assign Jira issues — built with asyncio task handling and enterprise system integration, cutting mean diagnosis time from 8 hours to 20 minutes.
 
-**ParsChat Product Tech Lead**  
-Nov 2022 - Present
-- Lead a 15-member team; designed and implemented microservice-based ML infrastructure and CI/CD pipelines.
-- **Scale & Architecture**: Architected a Retrieval-Augmented Generation (RAG) system serving 200+ active enterprise users. Designed the vector retrieval pipeline to handle custom, domain-specific client requirements with high availability.
-- **Healthcare & Dermatology Pipelines**: Developed specialized inference models for healthcare and cosmetic decision support. Engineered a personality-based filtering algorithm that adapts recommendations to user behavioral profiles, ensuring "human-centric" AI interaction.
-- **Active Learning Framework**: Implemented a "human-in-the-loop" feedback system where the chatbot learns from user corrections in real-time. This significantly reduced hallucination rates and improved domain adaptation without requiring full model retraining.
-- **Optimization**: Integrated LLM fine-tuning with hybrid search (keyword + vector) and re-ranking methodologies, increasing information retrieval accuracy by 30%.
-- Designed a system to handle 2,000 req/min on a 4-core/8GB RAM node
-- Reduced chatbot delivery time (1 week to 5 min) for each user’s knowledge base, and reduced setup costs ($2.50 to $0.10)
+**ParsChat — Product Tech Lead** *(Nov 2022 – Present)*
+- **Enterprise AI Agent Platform:** Owned the full lifecycle — prototype through production — of a Python-based AI agent platform handling **20,000+ daily messages** across diverse enterprise clients, integrating agents with existing CRM and e-commerce backend systems.
+- **3rd-Party Model Evaluation & Deployment:** Selected **QWEN** over competing OSS and API alternatives through structured evaluation of latency, accuracy, and cost; deployed via **vLLM on RTX 5090**, achieving **60 messages/min** throughput; maintained an agent evaluation harness tracking quality regressions across model versions.
+- **Agent Orchestration (LangGraph):** Re-architected the agent pipeline into a **graph-based design (LangGraph)** with intent-based routing and state management, enabling zero-hallucination processing of knowledge bases up to **10 million characters**.
+- **Business Impact:** Reduced agent delivery time from 1 week to 5 minutes and cut per-user setup costs by **96%** ($2.50 → $0.10) — every technical decision tied to a measurable dollar outcome.
 
-**Product Owner: AshenasAI (eKYC & Biometrics)**  
-Feb 2023 – Jul 2023
-- **Computer Vision Pipeline**: Directed the development of a multi-module biometric verification system (Liveness Detection, 3D Face Verification, OCR).
-- **High-Performance Face Recognition**: Fine-tuned recognition models on a dataset of 49 million images using NVIDIA A6000 GPUs, achieving 99.97% accuracy.
-- **Performance Optimization**: Optimized heavy deep learning models to run on CPU-based edge architecture, achieving real-time processing (20 seconds for 5 distinct verification modules).
-- **Infrastructure**: Deployed services via FastAPI, gRPC, and Celery/Redis, ensuring interoperability and scalable task management.
+**AshenasAI (eKYC & Biometrics)** *(Feb 2023 – Jul 2023)*
+- **Multi-Module AI System Integration:** Designed and integrated a 5-module pipeline (Liveness Detection, 3D Face Verification, OCR, biometric matching) against an existing enterprise identity system using strongly-typed Python interfaces, FastAPI, gRPC, and Celery/Redis.
+- **Model Evaluation & Optimization:** Evaluated and fine-tuned face recognition models on **49M images** (NVIDIA A6000) to achieve 99.97% accuracy; profiled and optimized the same models for CPU-based deployment, achieving real-time performance across all 5 modules (20 seconds end-to-end).
 
-**DastYar AI Tech Lead**  
-Aug 2021 - Oct 2022
-- Optimized video analytics: GPU latency 200 → 40 ms, throughput ≈ 1,000 fps
-- Fine-tuned a large-scale face recognition model on 49M+ images, reaching 99.97%
-- Head detector: lightweight trained YOLO model (84% mAP, ~1 ms TRT Deployment)
+**DastYar — AI Tech Lead** *(Aug 2021 – Oct 2022)*
+- Optimized video analytics: GPU latency 200 → 40 ms, throughput ≈ 1,000 fps.
+- Fine-tuned a large-scale face recognition model on 49M+ images, reaching 99.97%.
+- Head detector: lightweight trained YOLO model (84% mAP, ~1 ms TRT Deployment).
 
-**ML Engineer**  
-Jul 2020 - Jul 2021
+**ML Engineer** *(Jul 2020 – Jul 2021)*
 - Trained OCR and gesture recognition systems (WER ↓ to 3%, top-5 = 84%).
-- **Doctorate Resume Analysis (NLP)**: Trained LayoutLMv3 models to extract structured data from unstructured medical websites/CVs (83% accuracy). Designed the schema for medical specialization classification.
-- **Resource-Efficient Edge AI**: Optimized detection models (TensorRT) for Jetson Nano/NX, enabling real-time video analytics (license plate recognition, people counting) on constrained hardware.
+- **Resource-Efficient Edge AI:** Optimized detection models (TensorRT) for Jetson Nano/NX, enabling real-time video analytics (license plate recognition, people counting) on constrained hardware.
+
+---
+
+### Sensifai BV — Freelance Engineer
+*Remote (Belgium) | Feb 2022 – Jul 2022 | Sep 2025 – Mar 2026*
+
+**DIPAL** *(Backend Engineer — SPADE Open Call #2, Sep 2025 – Mar 2026)*
+- **Drone Pipeline Backend:** Engineered scalable **AWS** backend services automating structure-from-motion (SfM) and multi-view-stereo (MVS) pipelines for an open-source photogrammetry toolkit, converting aerial drone captures into accurate 3D reconstructions and geospatial outputs with REST API integration for downstream GIS workflows.
+
+**SensiGesture** *(ML/MLOps Engineer — Automotive In-Cabin AI, Feb 2022 – Jul 2022)*
+- **Dataset & Model Development:** Curated a proprietary in-cabin dataset of **350,000+ annotated RGB frames** across day, night, glare, and overcast conditions; trained **MobileNetV3** models achieving recognition of **22 gestures** and **20 driver activity classes** (drowsiness, phone use, seatbelt violations) for real-time inference.
+- **Edge MLOps:** Built end-to-end pipeline for data versioning, automated evaluation, and on-device deployment on automotive-grade edge hardware.
+
+---
+
+## Education
+
+**Khajeh Nasir University of Technology (KNTU)** — Tehran, Iran  
+*M.Sc., Biomedical Engineering (Bioelectric)*  
+Oct 2019 – Feb 2023 | GPA: 18.04 / 20  
+**Thesis:** Modeling of Human Brain Perisylvian Pathways Development with Diffusion Tensor Imaging
+
+**Ferdowsi University of Mashhad (FUM)** — Mashhad, Iran  
+*B.Sc., Electrical Engineering (Communications)*  
+Oct 2014 – Feb 2019 | GPA: 15.8 / 20  
+**Thesis:** Smoke Detection using Compressive Sensing and SVM
+
+---
+
+## Publication
+
+**Kazemi, A.**, Abrishami Moghaddam, H., Namiranian, R.  
+*Microstructural Analysis of Language Pathways' Development in Term Neonates.* (Manuscript in preparation)
+
+---
 
 ## Extra Curricular Activities
-**IEEE Student Branch**  
-*FUM*  
-Feb 2014 - Feb 2018  
-- Active member, progressing to key leadership roles.
-- Served as Chairman (2017–18) and Treasurer (2016–17), managing finances and leading branch operations.
 
-## Technology Skills
-- **AI / ML**: MATLAB, Python, PyTorch, TensorFlow, Transformers, LangChain, ONNX, TensorRT
-- **Systems**: FastAPI, Docker, Kubernetes, Redis, PostgreSQL, ElasticSearch, CI/CD, Grafana, Celery
-- **Neuroimaging**: DSI Studio, DIPY, FSL, MRtrix3, q-space methods
-- **Other**: Git, OpenCV, Plotly, scikit-learn
+**IEEE Student Branch — FUM**  
+Feb 2014 – Feb 2018  
+- Chairman (2017–18) and Treasurer (2016–17), managing finances and leading branch operations.
 
-## Selected Coursework & Certifications
-- **KNTU**: Deep Learning (19.5/20), Big Data Analysis (19.25/20), Biostatistics (19.5/20), Digital Image Processing (18.5/20)
-- **FUM**: AI Expert Systems (20/20), Linear Algebra (20/20), Digital Signal Processing (17.25 / 20)
 
-## Language
-- **Persian**: Native
-- **TOEFL iBT**: 105 / 120 (Reading: 28, Listening: 29, Speaking: 23, Writing: 25)
-
-## References
-- **Prof. Hamid Abrishami Moghaddam**, moghaddam@kntu.ac.ir — Thesis Supervisor, KNTU
-- **Dr. Ahmadreza Heravi**, ahmadreza.heravi@mail.um.ac.ir — Chief Executive Officer, ParsTech AI
-- **Dr. Ali Khadem**, alikhadem@kntu.ac.ir — Thesis Consultant, KNTU
