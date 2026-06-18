@@ -6,6 +6,12 @@
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
 
+  <!-- Favicon: EEG-trace mark -->
+  <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
+  <link rel="alternate icon" href="{{ '/favicon.svg' | relative_url }}">
+  <link rel="mask-icon" href="{{ '/favicon.svg' | relative_url }}" color="#b3541e">
+  <meta name="theme-color" content="#1a1c22">
+
   <!-- Fonts: Fraunces (display serif, optical-size axis) + Newsreader (body serif) + Spline Sans Mono (data/labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
