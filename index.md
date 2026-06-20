@@ -48,7 +48,7 @@ See the full list on the [Research & Projects page](/projects/).
 - A research record: M.Sc. thesis in computational neuroscience, a paper in progress, and an independent EEG-decoding project.
 - The ability to **build the experimental infrastructure others publish on** — training pipelines, evaluation harnesses, model serving.
 - Depth in PyTorch/TensorFlow, transformers, LoRA, RAG, and the full MLOps stack, with reproducible, test-driven code.
-- TOEFL iBT 105/120; open to relocation.
+- TOEFL iBT 105/120; comfortable working and publishing in English.
 
 ## Contact
 

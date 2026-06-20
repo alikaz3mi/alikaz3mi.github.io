@@ -2,3 +2,19 @@ title: Ali Kazemi
 description: Researcher in Biomedical AI & Computational Neuroscience | Machine Learning, Medical Imaging & Neural Signals | Seeking a Funded PhD
 theme: jekyll-theme-cayman
 show_downloads: false
+
+# Reverse-chronological milestone feed shown on the home page.
+# Keep these REAL and verifiable — no invented awards, talks, or citations.
+news:
+  - date: "2026-03"
+    label: "DIPAL"
+    text: "Wrapped a 6-month research-engineering engagement with **Sensifai BV** (EU SPADE Open Call #2): an AWS backend automating SfM/MVS photogrammetry pipelines."
+  - date: "2026-01"
+    label: "Mind2Text"
+    text: "Released **Mind2Text** — EEG decoding with LoRA-fine-tuned LLMs and symbolic tokenization, reaching **78.2%** accuracy over CNN/SVM baselines."
+  - date: "2025-11"
+    label: "Manuscript"
+    text: "Manuscript in preparation from the M.Sc. thesis: *Microstructural Analysis of Language Pathways' Development in Term Neonates.*"
+  - date: "2023-02"
+    label: "M.Sc."
+    text: "Completed the **M.Sc. in Biomedical Engineering** (KNTU, GPA 18.04/20) with a diffusion-tensor thesis on neonatal brain development."

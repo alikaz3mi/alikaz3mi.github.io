@@ -55,6 +55,16 @@ These production projects are where I built the experimental and infrastructure 
 **Technologies**: Python, AWS (EC2, SQS, IAM), REST API, GIS, SfM/MVS.
 **Outcome**: Aerial drone capture processed into accurate 3D reconstructions and geospatial outputs with REST integration for GIS workflows.
 
+<figure class="shot" markdown="0">
+  <a href="https://photogear.sensifai.com" target="_blank" rel="noopener">
+    <picture>
+      <source srcset="{{ '/assets/img/photogear.webp' | relative_url }}" type="image/webp">
+      <img src="{{ '/assets/img/photogear.png' | relative_url }}" width="1200" height="591" loading="lazy" decoding="async" alt="PhotoGear — AWS photogrammetry platform turning drone flights into NDVI maps and 3D models">
+    </picture>
+  </a>
+  <figcaption><b>PhotoGear</b> — the productized photogrammetry platform this backend powers · <span>photogear.sensifai.com</span></figcaption>
+</figure>
+
 ---
 
 ### SensiGesture — Automotive in-cabin AI
@@ -63,6 +73,16 @@ These production projects are where I built the experimental and infrastructure 
 **Objective**: Real-time in-cabin driver monitoring recognizing gestures and driver activity for automotive-grade edge hardware.
 **Technologies**: Python, MobileNetV3, PyTorch, TensorRT, Edge MLOps, Docker.
 **Outcome**: Curated 350,000+ annotated RGB frames across day/night/glare/overcast; trained models recognizing 22 gestures and 20 driver-activity classes; end-to-end MLOps pipeline for versioning, evaluation, and on-device deployment.
+
+<figure class="shot" markdown="0">
+  <a href="https://sensifai.com/en/portfolio/sensigesture" target="_blank" rel="noopener">
+    <picture>
+      <source srcset="{{ '/assets/img/sensigesture.webp' | relative_url }}" type="image/webp">
+      <img src="{{ '/assets/img/sensigesture.png' | relative_url }}" width="1200" height="591" loading="lazy" decoding="async" alt="SensiGesture — automotive in-cabin driver-monitoring and gesture-recognition system">
+    </picture>
+  </a>
+  <figcaption><b>SensiGesture</b> — in-cabin driver-monitoring product (Sensifai) · <span>sensifai.com</span></figcaption>
+</figure>
 
 ---
 

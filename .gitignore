@@ -1,0 +1,14 @@
+# Jekyll build output & cache
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Bundler (keep Gemfile.lock tracked; ignore installed gems if vendored)
+vendor/
+.bundle/
+
+# Local QA / preview artifacts
+_preview*.html
+_qa*.png
+_shot*.mjs

@@ -6,7 +6,7 @@ permalink: /resume/
 
 # Ali Kazemi
 **Researcher in Biomedical AI, Computational Neuroscience & Data Science — seeking a funded PhD**
-📍 Mashhad, Iran | Open to relocation | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307
+📍 Mashhad, Iran | 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) | 📱 (+98) 915-239-0307
 🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) | [GitHub](https://github.com/alikaz3mi) | [Research Statement](/research/)
 
 ---

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en' }}">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description }}">
+
+  <!-- Set theme before paint to avoid a flash of the wrong palette -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme') || 'auto';
+        document.documentElement.setAttribute('data-theme', t);
+        var l = localStorage.getItem('lang') || 'en';
+        document.documentElement.setAttribute('lang', l);
+      }catch(e){}
+    })();
+  </script>
 
   <!-- Favicon: EEG-trace mark -->
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon.svg' | relative_url }}">
@@ -19,7 +31,7 @@
 
   <style>
     :root{
-      /* Manuscript / lab-notebook palette */
+      /* Manuscript / lab-notebook palette (light) */
       --paper:        #f4f1ea;   /* aged manuscript */
       --paper-2:      #ece7db;
       --ink:          #1a1c22;   /* near-black ink */
@@ -30,16 +42,26 @@
       --accent:       #b3541e;   /* oscilloscope amber / iron-oxide */
       --accent-2:     #1f6f78;   /* neural cyan-teal */
       --accent-glow:  rgba(179,84,30,.16);
+      --grain-blend:  multiply;
+      --grain-opacity:.05;
       --maxw: 1080px;
       --serif-display: "Fraunces", Georgia, serif;
       --serif-body: "Newsreader", Georgia, serif;
       --mono: "Spline Sans Mono", ui-monospace, monospace;
     }
+    /* Dark palette: applied when data-theme="dark", OR data-theme="auto" + OS prefers dark */
+    :root[data-theme="dark"]{
+      --paper:#14161b; --paper-2:#191c22; --ink:#ece7db; --ink-soft:#c4bfb4;
+      --ink-faint:#8b8e98; --line:#262a33; --line-strong:#333845;
+      --accent:#e08545; --accent-2:#46c2cc; --accent-glow:rgba(224,133,69,.18);
+      --grain-blend:screen; --grain-opacity:.04;
+    }
     @media (prefers-color-scheme: dark){
-      :root{
+      :root[data-theme="auto"]{
         --paper:#14161b; --paper-2:#191c22; --ink:#ece7db; --ink-soft:#c4bfb4;
         --ink-faint:#8b8e98; --line:#262a33; --line-strong:#333845;
         --accent:#e08545; --accent-2:#46c2cc; --accent-glow:rgba(224,133,69,.18);
+        --grain-blend:screen; --grain-opacity:.04;
       }
     }
 
@@ -50,6 +72,7 @@
       font-family:var(--serif-body);
       font-size:18px; line-height:1.65; font-weight:380;
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      transition:background-color .4s ease, color .4s ease;
       /* graph-paper grid + subtle vignette */
       background-image:
         linear-gradient(var(--line) 1px, transparent 1px),
@@ -58,39 +81,70 @@
       background-position: -1px -1px, -1px -1px;
     }
     body::before{ /* grain / paper tooth */
-      content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.05;
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:1;
+      opacity:var(--grain-opacity); mix-blend-mode:var(--grain-blend);
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      mix-blend-mode:multiply;
     }
-    @media (prefers-color-scheme: dark){ body::before{ mix-blend-mode:screen; opacity:.04 } }
 
     /* ---------- Top bar ---------- */
     .masthead{
       position:sticky; top:0; z-index:20;
-      display:flex; align-items:baseline; justify-content:space-between; gap:1rem;
-      padding:.85rem clamp(1rem,4vw,2.4rem);
+      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+      padding:.7rem clamp(1rem,4vw,2.4rem);
       background:color-mix(in srgb, var(--paper) 82%, transparent);
       backdrop-filter:blur(10px) saturate(1.1);
       border-bottom:1px solid var(--line-strong);
     }
-    .brand{ font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); text-decoration:none; display:flex; align-items:center; gap:.55rem }
+    .brand{ font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); text-decoration:none; display:flex; align-items:center; gap:.55rem; white-space:nowrap }
     .brand .dot{ width:9px; height:9px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 var(--accent-glow); animation:pulse 2.6s infinite }
     @keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent-glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
-    nav.nav{ display:flex; gap:clamp(.7rem,2.5vw,1.6rem); font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; flex-wrap:wrap }
+    .mast-right{ display:flex; align-items:center; gap:clamp(.6rem,2vw,1.4rem) }
+    nav.nav{ display:flex; gap:clamp(.7rem,2.2vw,1.5rem); font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; flex-wrap:wrap }
     nav.nav a{ color:var(--ink-faint); text-decoration:none; padding-bottom:2px; border-bottom:1.5px solid transparent; transition:color .2s, border-color .2s }
     nav.nav a:hover, nav.nav a[aria-current]{ color:var(--ink); border-color:var(--accent) }
+
+    /* ---------- Toolbar: language + theme ---------- */
+    .tools{ display:flex; align-items:center; gap:.5rem }
+    .tool{
+      display:inline-flex; align-items:center; gap:.4rem;
+      font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--ink-soft); background:color-mix(in srgb,var(--paper) 60%, transparent);
+      border:1px solid var(--line-strong); border-radius:2px;
+      padding:.34rem .5rem; cursor:pointer; line-height:1;
+      transition:border-color .2s, color .2s, background-color .2s;
+    }
+    .tool:hover{ color:var(--ink); border-color:var(--accent) }
+    .tool svg{ width:14px; height:14px; display:block }
+    .lang-wrap{ position:relative }
+    .lang-menu{
+      position:absolute; right:0; top:calc(100% + .4rem); z-index:30;
+      display:none; flex-direction:column; min-width:9.5rem;
+      background:var(--paper); border:1px solid var(--line-strong); border-radius:3px;
+      box-shadow:0 12px 30px -12px rgba(0,0,0,.35); overflow:hidden;
+    }
+    .lang-menu.open{ display:flex }
+    .lang-menu button{
+      all:unset; cursor:pointer; padding:.5rem .7rem;
+      font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; color:var(--ink-soft);
+      display:flex; justify-content:space-between; gap:1rem; transition:background-color .15s, color .15s;
+    }
+    .lang-menu button:hover{ background:var(--paper-2); color:var(--ink) }
+    .lang-menu button[aria-current="true"]{ color:var(--accent) }
+    .lang-menu button .code{ color:var(--ink-faint); font-size:.66rem }
 
     /* ---------- Hero (home only) ---------- */
     .hero{ position:relative; border-bottom:1px solid var(--line-strong); overflow:hidden }
     .hero canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.9 }
     .hero-inner{
       position:relative; z-index:2; max-width:var(--maxw); margin:0 auto;
-      padding:clamp(3.5rem,9vw,7rem) clamp(1rem,4vw,2.4rem) clamp(2.5rem,6vw,4rem);
+      padding:clamp(3rem,8vw,6rem) clamp(1rem,4vw,2.4rem) clamp(2.5rem,6vw,4rem);
+      display:grid; grid-template-columns:1fr auto; gap:clamp(1.5rem,5vw,3.5rem); align-items:center;
     }
+    .hero-text{ min-width:0 }
     .eyebrow{ font-family:var(--mono); font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin:0 0 1.1rem }
     .hero h1{
       font-family:var(--serif-display); font-optical-sizing:auto;
-      font-weight:340; font-size:clamp(2.6rem,7vw,5.2rem); line-height:.98;
+      font-weight:340; font-size:clamp(2.4rem,6.2vw,4.8rem); line-height:.99;
       letter-spacing:-.02em; margin:0 0 1.1rem; max-width:16ch;
     }
     .hero h1 em{ font-style:italic; color:var(--accent); font-weight:380 }
@@ -102,6 +156,46 @@
       color:var(--ink-soft); background:color-mix(in srgb,var(--paper) 70%, transparent);
     }
     .chip b{ color:var(--accent-2); font-weight:600 }
+
+    /* circular portrait, framed like a specimen plate */
+    .portrait{ position:relative; justify-self:center }
+    .portrait img{
+      display:block; width:clamp(150px,22vw,238px); height:clamp(150px,22vw,238px);
+      border-radius:50%; object-fit:cover; object-position:50% 32%;
+      border:1px solid var(--line-strong);
+      box-shadow:0 0 0 6px color-mix(in srgb,var(--paper) 78%, transparent), 0 18px 40px -18px rgba(0,0,0,.45);
+      filter:saturate(.96);
+    }
+    .portrait::after{ /* thin amber registration ring */
+      content:""; position:absolute; inset:-12px; border-radius:50%;
+      border:1.5px solid var(--accent); opacity:.5;
+      -webkit-mask:radial-gradient(transparent 60%,#000 61%);
+    }
+    .portrait figcaption{
+      position:absolute; bottom:-.4rem; left:50%; transform:translateX(-50%);
+      font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
+      color:var(--ink-faint); background:var(--paper); padding:.15rem .5rem; white-space:nowrap;
+      border:1px solid var(--line);
+    }
+
+    /* ---------- News / activity feed (home) ---------- */
+    .news{ position:relative; z-index:2; max-width:var(--maxw); margin:0 auto; padding:clamp(2rem,5vw,3.2rem) clamp(1rem,4vw,2.4rem) 0 }
+    .news h2{
+      font-family:var(--mono); font-weight:600; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--accent-2); margin:0 0 1.4rem; display:flex; align-items:center; gap:.7rem;
+    }
+    .news h2::after{ content:""; flex:1; height:1px; background:var(--line-strong) }
+    .feed{ list-style:none; padding:0; margin:0; display:grid; gap:0 }
+    .feed li{
+      display:grid; grid-template-columns:5.2rem 1fr; gap:clamp(.8rem,3vw,1.6rem);
+      padding:.85rem 0; border-top:1px solid var(--line);
+      align-items:baseline;
+    }
+    .feed li:first-child{ border-top:0 }
+    .feed time{ font-family:var(--mono); font-size:.72rem; letter-spacing:.04em; color:var(--accent); white-space:nowrap }
+    .feed .feed-body{ color:var(--ink-soft); font-size:1rem; line-height:1.5 }
+    .feed .feed-body b, .feed .feed-body strong{ color:var(--ink); font-weight:600 }
+    .feed .tag{ font-family:var(--mono); font-size:.6rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-right:.55rem; border:1px solid var(--line-strong); border-radius:2px; padding:.06rem .35rem; white-space:nowrap }
 
     /* ---------- Main content (Markdown) ---------- */
     main{ position:relative; z-index:2 }
@@ -140,6 +234,16 @@
        Give resume-style "### Title — sub" blocks a left rule for scanability */
     .page h3 + p{ padding-left:.9rem; border-left:1px solid var(--line-strong); margin-left:0 }
 
+    /* ---------- Project screenshots (framed like a plate in a paper) ---------- */
+    .shot{ margin:1.6rem 0 .6rem; border:1px solid var(--line-strong); border-radius:4px; overflow:hidden; background:var(--paper-2); box-shadow:0 14px 34px -20px rgba(0,0,0,.4) }
+    .shot a{ display:block; background:none; padding:0; line-height:0 }
+    .shot a:hover{ background:none }
+    .shot img{ display:block; width:100%; height:auto; transition:transform .5s cubic-bezier(.2,.7,.2,1) }
+    .shot a:hover img{ transform:scale(1.015) }
+    .shot figcaption{ font-family:var(--mono); font-size:.68rem; letter-spacing:.03em; color:var(--ink-soft); padding:.6rem .8rem; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:.35rem .6rem; align-items:baseline; line-height:1.4 }
+    .shot figcaption b{ color:var(--accent-2); font-weight:600; text-transform:uppercase; letter-spacing:.06em; font-size:.66rem }
+    .shot figcaption span{ color:var(--ink-faint); margin-left:auto }
+
     /* ---------- Footer ---------- */
     footer.foot{ position:relative; z-index:2; border-top:1px solid var(--line-strong); padding:2.2rem clamp(1rem,4vw,2.4rem); max-width:var(--maxw); margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; font-family:var(--mono); font-size:.74rem; letter-spacing:.04em; color:var(--ink-faint) }
     footer.foot a{ color:var(--ink-soft); text-decoration:none }
@@ -149,7 +253,14 @@
     @keyframes rise{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
     .reveal{ opacity:0; animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards }
     .reveal.d1{animation-delay:.05s}.reveal.d2{animation-delay:.18s}.reveal.d3{animation-delay:.31s}.reveal.d4{animation-delay:.44s}.reveal.d5{animation-delay:.57s}
-    @media (prefers-reduced-motion: reduce){ .reveal{animation:none; opacity:1} .brand .dot{animation:none} }
+    @media (prefers-reduced-motion: reduce){ .reveal{animation:none; opacity:1} .brand .dot{animation:none} body{transition:none} }
+
+    @media (max-width:720px){
+      .hero-inner{ grid-template-columns:1fr; }
+      .portrait{ order:-1; justify-self:start }
+      .portrait img{ width:128px; height:128px }
+      .portrait::after{ inset:-9px }
+    }
 
     ::selection{ background:var(--accent); color:var(--paper) }
   </style>
@@ -158,30 +269,73 @@
 
   <header class="masthead">
     <a class="brand" href="/"><span class="dot"></span>Ali&nbsp;Kazemi</a>
-    <nav class="nav">
-      <a href="/"{% if page.url == "/" %} aria-current="page"{% endif %}>Home</a>
-      <a href="/research/"{% if page.url contains "research" %} aria-current="page"{% endif %}>Research</a>
-      <a href="/projects/"{% if page.url contains "projects" %} aria-current="page"{% endif %}>Projects</a>
-      <a href="/resume/"{% if page.url contains "resume" %} aria-current="page"{% endif %}>CV</a>
-      <a href="/about/"{% if page.url contains "about" %} aria-current="page"{% endif %}>About</a>
-    </nav>
+    <div class="mast-right">
+      <nav class="nav">
+        <a href="/" data-i18n="nav.home"{% if page.url == "/" %} aria-current="page"{% endif %}>Home</a>
+        <a href="/research/" data-i18n="nav.research"{% if page.url contains "research" %} aria-current="page"{% endif %}>Research</a>
+        <a href="/projects/" data-i18n="nav.projects"{% if page.url contains "projects" %} aria-current="page"{% endif %}>Projects</a>
+        <a href="/resume/" data-i18n="nav.cv"{% if page.url contains "resume" %} aria-current="page"{% endif %}>CV</a>
+        <a href="/about/" data-i18n="nav.about"{% if page.url contains "about" %} aria-current="page"{% endif %}>About</a>
+      </nav>
+      <div class="tools">
+        <div class="lang-wrap">
+          <button class="tool" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Change language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+            <span id="langLabel">EN</span>
+          </button>
+          <div class="lang-menu" id="langMenu" role="menu">
+            <button data-lang="en" role="menuitem"><span>English</span><span class="code">EN</span></button>
+            <button data-lang="de" role="menuitem"><span>Deutsch</span><span class="code">DE</span></button>
+            <button data-lang="nl" role="menuitem"><span>Nederlands</span><span class="code">NL</span></button>
+            <button data-lang="da" role="menuitem"><span>Dansk</span><span class="code">DA</span></button>
+            <button data-lang="fr" role="menuitem"><span>Français</span><span class="code">FR</span></button>
+          </div>
+        </div>
+        <button class="tool" id="themeBtn" aria-label="Toggle colour theme" title="Theme: auto / light / dark">
+          <span id="themeIcon" aria-hidden="true"></span>
+          <span id="themeLabel">AUTO</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   {% if page.url == "/" %}
   <section class="hero">
     <canvas id="trace" aria-hidden="true"></canvas>
     <div class="hero-inner">
-      <p class="eyebrow reveal d1">Biomedical&nbsp;AI · Computational&nbsp;Neuroscience · Data&nbsp;Science</p>
-      <h1 class="reveal d2">Reading structure out of <em>noisy brains</em> and noisy data.</h1>
-      <p class="lede reveal d3">I work where biomedical engineering, neuroscience, and machine learning meet — from diffusion-tensor models of the developing brain to LLMs that decode EEG. Seeking a funded PhD.</p>
-      <div class="hero-meta reveal d4">
-        <span class="chip">M.Sc. Biomedical Eng · <b>GPA 18.04/20</b></span>
-        <span class="chip">EEG decoding · <b>78.2%</b></span>
-        <span class="chip">TOEFL iBT · <b>105/120</b></span>
-        <span class="chip">6&nbsp;yrs production ML</span>
+      <div class="hero-text">
+        <p class="eyebrow reveal d1" data-i18n="hero.eyebrow">Biomedical&nbsp;AI · Computational&nbsp;Neuroscience · Data&nbsp;Science</p>
+        <h1 class="reveal d2" data-i18n-html="hero.title">Reading structure out of <em>noisy brains</em> and noisy data.</h1>
+        <p class="lede reveal d3" data-i18n="hero.lede">I work where biomedical engineering, neuroscience, and machine learning meet, from diffusion-tensor models of the developing brain to LLMs that decode EEG. Seeking a funded PhD.</p>
+        <div class="hero-meta reveal d4">
+          <span class="chip" data-i18n-html="chip.msc">M.Sc. Biomedical Eng · <b>GPA 18.04/20</b></span>
+          <span class="chip" data-i18n-html="chip.eeg">EEG decoding · <b>78.2%</b></span>
+          <span class="chip" data-i18n-html="chip.toefl">TOEFL iBT · <b>105/120</b></span>
+          <span class="chip" data-i18n="chip.exp">6&nbsp;yrs production ML</span>
+        </div>
       </div>
+      <figure class="portrait reveal d3">
+        <img src="{{ '/assets/img/portrait.jpg' | relative_url }}"
+             srcset="{{ '/assets/img/portrait.jpg' | relative_url }} 1x, {{ '/assets/img/portrait@2x.jpg' | relative_url }} 2x"
+             width="238" height="238" alt="Ali Kazemi" loading="eager" decoding="async">
+        <figcaption data-i18n="portrait.caption">Ali Kazemi</figcaption>
+      </figure>
     </div>
   </section>
+
+  {% if site.news %}
+  <section class="news reveal d5" aria-label="Recent activity">
+    <h2 data-i18n="news.title">Recent</h2>
+    <ul class="feed">
+      {% for item in site.news %}
+      <li>
+        <time datetime="{{ item.date }}">{{ item.date | append: "-01" | date: "%b %Y" }}</time>
+        <div class="feed-body">{% if item.label %}<span class="tag">{{ item.label }}</span>{% endif %}{{ item.text | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
   {% endif %}
 
   <main>
@@ -191,17 +345,130 @@
   </main>
 
   <footer class="foot">
-    <span>Ali Kazemi · Mashhad, Iran · open to relocation</span>
+    <span data-i18n="footer.where">Ali Kazemi · Mashhad, Iran</span>
     <span>
-      <a href="mailto:alikazemi@ieee.org">Email</a> ·
+      <a href="mailto:alikazemi@ieee.org" data-i18n="footer.email">Email</a> ·
       <a href="https://www.linkedin.com/in/ali-kazemi-199510/">LinkedIn</a> ·
       <a href="https://github.com/alikaz3mi">GitHub</a>
     </span>
   </footer>
 
   <script>
-  /* Living neural trace: layered EEG-like signals drifting across the hero,
-     plus faint tractography arcs. Calm, scientific, not flashy. */
+  /* ---------------- i18n: UI chrome only (body prose stays in English) ---------------- */
+  (function(){
+    var DICT = {
+      en:{
+        "nav.home":"Home","nav.research":"Research","nav.projects":"Projects","nav.cv":"CV","nav.about":"About",
+        "hero.eyebrow":"Biomedical AI · Computational Neuroscience · Data Science",
+        "hero.title":"Reading structure out of <em>noisy brains</em> and noisy data.",
+        "hero.lede":"I work where biomedical engineering, neuroscience, and machine learning meet, from diffusion-tensor models of the developing brain to LLMs that decode EEG. Seeking a funded PhD.",
+        "chip.msc":"M.Sc. Biomedical Eng · <b>GPA 18.04/20</b>","chip.eeg":"EEG decoding · <b>78.2%</b>","chip.toefl":"TOEFL iBT · <b>105/120</b>","chip.exp":"6 yrs production ML",
+        "portrait.caption":"Ali Kazemi","news.title":"Recent","footer.where":"Ali Kazemi · Mashhad, Iran","footer.email":"Email","theme.auto":"AUTO","theme.light":"LIGHT","theme.dark":"DARK"
+      },
+      de:{
+        "nav.home":"Start","nav.research":"Forschung","nav.projects":"Projekte","nav.cv":"Lebenslauf","nav.about":"Über mich",
+        "hero.eyebrow":"Biomedizinische KI · Computational Neuroscience · Data Science",
+        "hero.title":"Struktur aus <em>verrauschten Gehirnen</em> und verrauschten Daten lesen.",
+        "hero.lede":"Ich arbeite an der Schnittstelle von Biomedizintechnik, Neurowissenschaft und maschinellem Lernen, von Diffusion-Tensor-Modellen des sich entwickelnden Gehirns bis zu LLMs, die EEG dekodieren. Ich suche eine finanzierte Promotion.",
+        "chip.msc":"M.Sc. Biomed. Technik · <b>Note 18,04/20</b>","chip.eeg":"EEG-Dekodierung · <b>78,2 %</b>","chip.toefl":"TOEFL iBT · <b>105/120</b>","chip.exp":"6 Jahre ML in Produktion",
+        "portrait.caption":"Ali Kazemi","news.title":"Aktuelles","footer.where":"Ali Kazemi · Mashhad, Iran","footer.email":"E-Mail","theme.auto":"AUTO","theme.light":"HELL","theme.dark":"DUNKEL"
+      },
+      nl:{
+        "nav.home":"Home","nav.research":"Onderzoek","nav.projects":"Projecten","nav.cv":"CV","nav.about":"Over mij",
+        "hero.eyebrow":"Biomedische AI · Computationele Neurowetenschap · Data Science",
+        "hero.title":"Structuur lezen uit <em>ruisende hersenen</em> en ruisende data.",
+        "hero.lede":"Ik werk waar biomedische technologie, neurowetenschap en machine learning samenkomen, van diffusie-tensormodellen van het zich ontwikkelende brein tot LLM's die EEG decoderen. Ik zoek een gefinancierd promotietraject.",
+        "chip.msc":"M.Sc. Biomed. Techniek · <b>GPA 18,04/20</b>","chip.eeg":"EEG-decodering · <b>78,2%</b>","chip.toefl":"TOEFL iBT · <b>105/120</b>","chip.exp":"6 jaar ML in productie",
+        "portrait.caption":"Ali Kazemi","news.title":"Recent","footer.where":"Ali Kazemi · Mashhad, Iran","footer.email":"E-mail","theme.auto":"AUTO","theme.light":"LICHT","theme.dark":"DONKER"
+      },
+      da:{
+        "nav.home":"Hjem","nav.research":"Forskning","nav.projects":"Projekter","nav.cv":"CV","nav.about":"Om mig",
+        "hero.eyebrow":"Biomedicinsk AI · Computational Neuroscience · Data Science",
+        "hero.title":"At læse struktur ud af <em>støjende hjerner</em> og støjende data.",
+        "hero.lede":"Jeg arbejder, hvor biomedicinsk teknik, neurovidenskab og maskinlæring mødes, fra diffusion-tensor-modeller af den udviklende hjerne til LLM'er, der afkoder EEG. Jeg søger en finansieret ph.d.",
+        "chip.msc":"M.Sc. Biomed. Teknik · <b>GPA 18,04/20</b>","chip.eeg":"EEG-afkodning · <b>78,2 %</b>","chip.toefl":"TOEFL iBT · <b>105/120</b>","chip.exp":"6 års ML i produktion",
+        "portrait.caption":"Ali Kazemi","news.title":"Nyt","footer.where":"Ali Kazemi · Mashhad, Iran","footer.email":"E-mail","theme.auto":"AUTO","theme.light":"LYS","theme.dark":"MØRK"
+      },
+      fr:{
+        "nav.home":"Accueil","nav.research":"Recherche","nav.projects":"Projets","nav.cv":"CV","nav.about":"À propos",
+        "hero.eyebrow":"IA biomédicale · Neurosciences computationnelles · Science des données",
+        "hero.title":"Lire la structure dans des <em>cerveaux bruités</em> et des données bruitées.",
+        "hero.lede":"Je travaille à la rencontre du génie biomédical, des neurosciences et de l'apprentissage automatique, des modèles de tenseur de diffusion du cerveau en développement aux LLM qui décodent l'EEG. Je recherche un doctorat financé.",
+        "chip.msc":"M.Sc. Génie biomédical · <b>Moy. 18,04/20</b>","chip.eeg":"Décodage EEG · <b>78,2 %</b>","chip.toefl":"TOEFL iBT · <b>105/120</b>","chip.exp":"6 ans de ML en production",
+        "portrait.caption":"Ali Kazemi","news.title":"Actualités","footer.where":"Ali Kazemi · Mashhad, Iran","footer.email":"E-mail","theme.auto":"AUTO","theme.light":"CLAIR","theme.dark":"SOMBRE"
+      }
+    };
+    var LANGS = ["en","de","nl","da","fr"];
+    function getLang(){ try{ var l=localStorage.getItem('lang'); return LANGS.indexOf(l)>=0?l:'en'; }catch(e){ return 'en'; } }
+
+    function applyLang(lang){
+      var d = DICT[lang] || DICT.en;
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var k = el.getAttribute('data-i18n'); if(d[k]!=null) el.textContent = d[k];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+        var k = el.getAttribute('data-i18n-html'); if(d[k]!=null) el.innerHTML = d[k];
+      });
+      var label = document.getElementById('langLabel'); if(label) label.textContent = lang.toUpperCase();
+      document.querySelectorAll('#langMenu button').forEach(function(b){
+        b.setAttribute('aria-current', b.getAttribute('data-lang')===lang ? 'true':'false');
+      });
+      // refresh theme label (it is localized)
+      window.__refreshThemeLabel && window.__refreshThemeLabel(d);
+    }
+
+    var btn = document.getElementById('langBtn'),
+        menu = document.getElementById('langMenu');
+    btn && btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open?'true':'false');
+    });
+    document.addEventListener('click', function(){ menu && menu.classList.remove('open'); btn && btn.setAttribute('aria-expanded','false'); });
+    menu && menu.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var lang = b.getAttribute('data-lang');
+        try{ localStorage.setItem('lang', lang); }catch(e){}
+        applyLang(lang); menu.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+      });
+    });
+
+    window.__DICT = DICT;
+    applyLang(getLang());
+  })();
+
+  /* ---------------- Theme: auto → light → dark, persisted ---------------- */
+  (function(){
+    var ICONS = {
+      auto:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>',
+      light:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4 4l2 2M18 18l2 2M20 4l-2 2M6 18l-2 2"/></svg>',
+      dark:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg>'
+    };
+    var ORDER = ['auto','light','dark'];
+    function get(){ try{ var t=localStorage.getItem('theme'); return ORDER.indexOf(t)>=0?t:'auto'; }catch(e){ return 'auto'; } }
+    var iconEl = document.getElementById('themeIcon'), labelEl = document.getElementById('themeLabel');
+    function curDict(){ var l=document.documentElement.getAttribute('lang')||'en'; return (window.__DICT&&window.__DICT[l])||{}; }
+    function render(t){
+      document.documentElement.setAttribute('data-theme', t);
+      if(iconEl) iconEl.innerHTML = ICONS[t];
+      var d = curDict();
+      if(labelEl) labelEl.textContent = d['theme.'+t] || t.toUpperCase();
+      var meta = document.querySelector('meta[name=theme-color]');
+      if(meta){ var dark = t==='dark' || (t==='auto' && window.matchMedia('(prefers-color-scheme: dark)').matches); meta.setAttribute('content', dark?'#14161b':'#f4f1ea'); }
+    }
+    window.__refreshThemeLabel = function(){ render(get()); };
+    var btn = document.getElementById('themeBtn');
+    btn && btn.addEventListener('click', function(){
+      var next = ORDER[(ORDER.indexOf(get())+1)%ORDER.length];
+      try{ localStorage.setItem('theme', next); }catch(e){}
+      render(next);
+    });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){ if(get()==='auto') render('auto'); });
+    render(get());
+  })();
+
+  /* ---------------- Living neural trace (hero background) ---------------- */
   (function(){
     var c = document.getElementById('trace'); if(!c) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -209,52 +476,34 @@
     function ink(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
     var COL_ACCENT, COL_TEAL, COL_LINE;
     function readColors(){ COL_ACCENT=ink('--accent'); COL_TEAL=ink('--accent-2'); COL_LINE=ink('--line-strong'); }
-    function resize(){ var r=c.getBoundingClientRect(); W=c.width=r.width*devicePixelRatio; H=c.height=r.height*devicePixelRatio; ctx.scale(devicePixelRatio,devicePixelRatio); }
+    function resize(){ var r=c.getBoundingClientRect(); W=c.width=r.width*devicePixelRatio; H=c.height=r.height*devicePixelRatio; ctx.setTransform(1,0,0,1,0,0); ctx.scale(devicePixelRatio,devicePixelRatio); }
     function W_(){return W/devicePixelRatio} function H_(){return H/devicePixelRatio}
 
-    // a few EEG channels at different baselines
     var channels = [
       {y:0.30, amp:14, freq:0.018, spd:0.9, col:'teal',  w:1.3},
       {y:0.50, amp:22, freq:0.012, spd:1.3, col:'accent',w:1.7},
       {y:0.70, amp:11, freq:0.026, spd:0.7, col:'line',  w:1.1},
       {y:0.86, amp:8,  freq:0.040, spd:1.1, col:'line',  w:1.0}
     ];
-    function colorFor(name,a){
-      var base = name==='accent'?COL_ACCENT : name==='teal'?COL_TEAL : COL_LINE;
-      return base; // alpha handled via globalAlpha
-    }
-    // pseudo-random spikes per channel for an electrophysiology feel
-    function spike(x, seed){
-      var s = Math.sin(x*0.05+seed)*Math.sin(x*0.013+seed*2);
-      return s>0.86 ? (s-0.86)/0.14 : 0;
-    }
+    function colorFor(name){ return name==='accent'?COL_ACCENT : name==='teal'?COL_TEAL : COL_LINE; }
+    function spike(x, seed){ var s = Math.sin(x*0.05+seed)*Math.sin(x*0.013+seed*2); return s>0.86 ? (s-0.86)/0.14 : 0; }
 
     function draw(){
       ctx.clearRect(0,0,W_(),H_());
       var w=W_(), h=H_();
-      // faint tractography arcs (DTI nod)
       ctx.globalAlpha=0.10; ctx.strokeStyle=COL_TEAL; ctx.lineWidth=1;
       for(var k=0;k<5;k++){
-        ctx.beginPath();
-        var off = t*0.2 + k*70;
-        for(var x=0;x<=w;x+=8){
-          var yy = h*0.5 + Math.sin((x+off)*0.006 + k)* (40+k*14) + Math.cos((x)*0.002+k)*18;
-          x===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy);
-        }
+        ctx.beginPath(); var off = t*0.2 + k*70;
+        for(var x=0;x<=w;x+=8){ var yy = h*0.5 + Math.sin((x+off)*0.006 + k)*(40+k*14) + Math.cos((x)*0.002+k)*18; x===0?ctx.moveTo(x,yy):ctx.lineTo(x,yy); }
         ctx.stroke();
       }
-      // EEG channels
       channels.forEach(function(ch,ci){
-        ctx.beginPath();
-        ctx.lineWidth=ch.w; ctx.strokeStyle=colorFor(ch.col);
+        ctx.beginPath(); ctx.lineWidth=ch.w; ctx.strokeStyle=colorFor(ch.col);
         ctx.globalAlpha = ch.col==='line'?0.28:0.55;
         var baseY = h*ch.y;
         for(var x=0;x<=w;x+=2){
           var phase = (x*ch.freq) + t*ch.spd*0.05 + ci;
-          var y = baseY
-                + Math.sin(phase)*ch.amp
-                + Math.sin(phase*2.3)*ch.amp*0.3
-                + spike(x+t*ch.spd, ci*3)* -ch.amp*2.4;
+          var y = baseY + Math.sin(phase)*ch.amp + Math.sin(phase*2.3)*ch.amp*0.3 + spike(x+t*ch.spd, ci*3)* -ch.amp*2.4;
           x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
         }
         ctx.stroke();
@@ -264,7 +513,8 @@
     function loop(){ t+=1; draw(); raf=requestAnimationFrame(loop); }
     function start(){ readColors(); resize(); if(reduce){ draw(); } else { cancelAnimationFrame(raf); loop(); } }
     window.addEventListener('resize', function(){ readColors(); resize(); if(reduce) draw(); });
-    if(window.matchMedia){ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readColors); }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(){ setTimeout(readColors, 50); });
+    new MutationObserver(function(){ setTimeout(readColors, 50); }).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
     start();
   })();
   </script>

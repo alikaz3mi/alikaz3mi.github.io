@@ -3,7 +3,7 @@
 
 **Researcher in Biomedical Engineering, Computational Neuroscience & Data Science · Machine Learning, Medical Imaging & Neural Signals · Seeking a Funded PhD**
 
-📍 Mashhad, Iran · Open to relocation · 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) · 📱 (+98) 915-239-0307
+📍 Mashhad, Iran · 📧 [alikazemi@ieee.org](mailto:alikazemi@ieee.org) · 📱 (+98) 915-239-0307
 
 🔗 [LinkedIn](https://www.linkedin.com/in/ali-kazemi-199510/) · [GitHub](https://github.com/alikaz3mi) · [CV](/resume/) · [Research Statement](/research/)
 
@@ -58,7 +58,7 @@ See the full list on the [Research & Projects page](/projects/).
 - A research record: M.Sc. thesis in computational neuroscience, a manuscript in preparation, and an independent EEG-decoding project.
 - The ability to **build the experimental infrastructure others publish on** — training pipelines, evaluation harnesses, model serving.
 - Depth in PyTorch/TensorFlow, transformers, LoRA, RAG, and the full MLOps stack, with reproducible, test-driven code.
-- TOEFL iBT 105/120; open to relocation.
+- TOEFL iBT 105/120; comfortable working and publishing in English.
 
 ---
 
