@@ -11,7 +11,7 @@
 
 ## About Me
 
-I work at the intersection of biomedical engineering, computational neuroscience, and data science. I hold an M.Sc. in biomedical engineering (GPA 18.04/20) with a thesis on diffusion-tensor modeling of brain development, and I have six years of experience building machine learning systems in industry. I am looking for a funded PhD — in biomedical AI, neural-signal and medical-image analysis, or applied machine learning more broadly. What ties my work together is how I do it: I test ideas with controlled experiments and defend the results with numbers. I want to do that in an academic setting and publish the outcomes.
+I work at the intersection of biomedical engineering, computational neuroscience, and data science. I hold an M.Sc. in biomedical engineering (GPA 18.04/20) with a thesis on diffusion-tensor modeling of brain development, and I have five years of experience building machine learning systems in industry. I am looking for a funded PhD — in biomedical AI, neural-signal and medical-image analysis, or applied machine learning more broadly. What ties my work together is how I do it: I test ideas with controlled experiments and defend the results with numbers. I want to do that in an academic setting and publish the outcomes.
 
 For the longer version, see my [**Research Statement**](/research/).
 

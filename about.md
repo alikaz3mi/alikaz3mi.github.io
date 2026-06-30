@@ -6,7 +6,7 @@ permalink: /about/
 
 ## About Me
 
-I am Ali Kazemi, a researcher working at the intersection of biomedical engineering, computational neuroscience, and data science. My background sits at the meeting point of two things that rarely travel together: a research training in biomedical signal processing and computational neuroscience (M.Sc., GPA 18.04/20), and six years building production machine learning systems where every method had to be measured, validated, and made to work on real data at scale.
+I am Ali Kazemi, a researcher working at the intersection of biomedical engineering, computational neuroscience, and data science. My background sits at the meeting point of two things that rarely travel together: a research training in biomedical signal processing and computational neuroscience (M.Sc., GPA 18.04/20), and five years building production machine learning systems where every method had to be measured, validated, and made to work on real data at scale.
 
 I am looking for a funded PhD across that range — biomedical AI, neural-signal and medical-image analysis, or applied machine learning. I am as drawn to a comp-neuro or medical-imaging group as to an AI lab, because my best work has been where the two meet.
 

@@ -4,7 +4,7 @@ title: Home
 description: Researcher in Biomedical AI, Computational Neuroscience & Data Science — seeking a funded PhD.
 ---
 
-I work at the intersection of biomedical engineering, computational neuroscience, and data science. I hold an M.Sc. in biomedical engineering (GPA 18.04/20) with a thesis on diffusion-tensor modeling of brain development, and six years of experience building machine learning systems in industry. I am looking for a funded PhD — in biomedical AI, neural-signal and medical-image analysis, or applied machine learning more broadly. What ties my work together is how I do it: I test ideas with controlled experiments and defend the results with numbers.
+I work at the intersection of biomedical engineering, computational neuroscience, and data science. I hold an M.Sc. in biomedical engineering (GPA 18.04/20) with a thesis on diffusion-tensor modeling of brain development, and five years of experience building machine learning systems in industry. I am looking for a funded PhD — in biomedical AI, neural-signal and medical-image analysis, or applied machine learning more broadly. What ties my work together is how I do it: I test ideas with controlled experiments and defend the results with numbers.
 
 For the longer version, see my [**Research Statement**](/research/).
 

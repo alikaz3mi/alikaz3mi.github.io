@@ -6,7 +6,7 @@ permalink: /research/
 
 # Research Statement
 
-I want to do a PhD at the point where biomedical engineering, computational neuroscience, and machine learning meet. That is where my training and my instincts already are: my M.Sc. was in neural-signal and brain-image modeling, my independent project applies modern ML to brain data, and six years of engineering taught me to turn a research idea into an experiment that actually runs and produces a defensible number.
+I want to do a PhD at the point where biomedical engineering, computational neuroscience, and machine learning meet. That is where my training and my instincts already are: my M.Sc. was in neural-signal and brain-image modeling, my independent project applies modern ML to brain data, and five years of engineering taught me to turn a research idea into an experiment that actually runs and produces a defensible number.
 
 ## Where I come from
 
@@ -14,7 +14,7 @@ My M.Sc. thesis modeled the development of perisylvian language pathways in the 
 
 Alongside it, I built [Mind2Text](https://github.com/alikaz3mi/mind2text), an independent project that decodes cognitive states from EEG using large language models with symbolic tokenization and LoRA fine-tuning. It reached 78.2% accuracy and beat CNN and SVM baselines. I started it to answer a specific question — whether transformer models, which were built for language, can read structure in brain signals — and the answer was interesting enough that I want to keep pulling on it.
 
-In parallel I spent six years building production machine learning systems. That work is not biomedical, but it is where I learned to do research at scale: fine-tuning models on 49M+ images to 99.97% accuracy, running structured model-evaluation studies, cutting inference cost by 96%, and building the pipelines and evaluation harnesses that let a result be reproduced rather than just reported. A lot of biomedical AI stalls not on ideas but on engineering. That is the part I am good at.
+In parallel I spent five years building production machine learning systems. That work is not biomedical, but it is where I learned to do research at scale: fine-tuning models on 49M+ images to 99.97% accuracy, running structured model-evaluation studies, cutting inference cost by 96%, and building the pipelines and evaluation harnesses that let a result be reproduced rather than just reported. A lot of biomedical AI stalls not on ideas but on engineering. That is the part I am good at.
 
 ## What I want to work on
 

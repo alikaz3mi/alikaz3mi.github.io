@@ -13,7 +13,7 @@ permalink: /resume/
 
 ## Profile
 
-Researcher at the intersection of biomedical engineering, computational neuroscience, and data science. M.Sc. in biomedical engineering with a thesis on diffusion-tensor modeling of brain development, plus six years building production machine learning systems. I combine research training in neural-signal and medical-image modeling with hands-on depth in deep learning, LLMs, and the engineering needed to run experiments at scale. I am seeking a funded PhD in biomedical AI, neural-signal or medical-image analysis, or applied machine learning — bringing measurable, reproducible experimentation from industry into published research.
+Researcher at the intersection of biomedical engineering, computational neuroscience, and data science. M.Sc. in biomedical engineering with a thesis on diffusion-tensor modeling of brain development, plus five years building production machine learning systems. I combine research training in neural-signal and medical-image modeling with hands-on depth in deep learning, LLMs, and the engineering needed to run experiments at scale. I am seeking a funded PhD in biomedical AI, neural-signal or medical-image analysis, or applied machine learning — bringing measurable, reproducible experimentation from industry into published research.
 
 **Research interests:** computational neuroscience and neural-signal analysis (EEG, spike sorting, BCI); medical imaging and biomedical data science (diffusion MRI, deep learning for clinical data); machine learning and LLMs (efficient inference, RAG, agentic and trustworthy AI).
 
